@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+<html lang="en">
+<head>
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'stylesheets/bootstrap.min.css' %}" type="text/css"/>#}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'stylesheets/jquery.dataTables.css' %}" type="text/css"/>
+     <link rel="stylesheet" href="{% static 'stylesheets/dataTables.bootstrap.min.css' %}" type="text/css"/>
+{#    {% bootstrap_css %}#}
+    {% bootstrap_javascript %}
+{#    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>#}
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<body>
+
+<div class=" col-md-10">
+{#        <div class="jumbotron">#}
+{#            <h1>Beacon List Data</h1>#}
+{#            <p>dataTable Example (server-side)</p>#}
+{#        </div>#}
+
+    <table id="datatables" class="table table-hover" style=" width:120%">
+            <thead>
+                <tr>
+{#                    <th>ID</th>#}
+                    <th>優惠券名稱</th>
+                    <th>優惠券內容</th>
+                    <th>抵銷金額</th>
+                    <th>開始</th>
+                    <th>結束</th>
+                    <th>ImageLink</th>
+                    <th>優惠券圖片</th>
+{#                    <th>Image</th>#}
+                    <th>動作</th>
+                </tr>
+            </thead>
+
+        </table>
+
+
+{#modal#}
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal_title"></h4>
+                </div>
+                <div class="modal-body">
+
+                    <form id="formEdit" role="form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="beacon_id"><span class="glyphicon glyphicon-pencil"></span>優惠券名稱</label>
+                            <input type="text" class="form-control" id="coupon_name" name="coupon_name" placeholder="coupon_name"
+                                   required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券內容</label>
+                            <input type="text" class="form-control" id="coupon_content" name="coupon_content" placeholder="coupon_content"
+                                   required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>抵銷金額</label>
+                            <input type="text" class="form-control" id="coupon_dismoney" name="coupon_dismoney" placeholder="coupon_dismoney"
+                                   required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券開始時間</label>
+                            <input type="date" class="form-control" id="coupon_s_time" name="coupon_s_time" placeholder="startTime"
+                                   required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券結束時間</label>
+                            <input type="date" class="form-control" id="coupon_e_time" name="coupon_e_time" placeholder="endTime"
+                                   required="true">
+                        </div>
+{#                        <div class="form-group">#}
+{#                            <label for="beacon_image_url"><span class="glyphicon glyphicon-file"></span> couponImageLink</label>#}
+{#                            <input type="text" class="form-control" id="coupon_image_url_link" name="coupon_image_url_link"#}
+{#                                   placeholder="beacon_image_url" required="true">#}
+{#                        </div>#}
+                        <input type="hidden" id="type" name="type" value="">
+                        <button type="submit" class="btn btn-success btn-block"><span
+                                class="glyphicon glyphicon-ok"></span> OK
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="confirmDelete" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="delete">Delete</button>
+                    <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<br><br><br><br><br><br>
+</body>
+{% endblock %}
+</html>

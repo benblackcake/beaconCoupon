@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+<html lang="en">
+<head>
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'stylesheets/bootstrap.min.css' %}" type="text/css"/>#}
+{#    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
+{#    <script src="{% static 'js/bootstrap.min.js' %}"></script>#}
+{#    <script src="{% static 'js/dataTables.bootstrap.min.js' %}"></script>#}
+{#    <script src="{% static 'js/jquery.dataTables.js' %}"></script>#}
+{#    <script src="{% static 'js/index.js' %}"></script>#}
+{#    <link rel="stylesheet" href="{% static 'stylesheets/jquery.dataTables.css' %}" type="text/css"/>#}
+{#     <link rel="stylesheet" href="{% static 'stylesheets/dataTables.bootstrap.min.css' %}" type="text/css"/>#}
+{#    {% bootstrap_css %}#}
+    {% bootstrap_javascript %}
+{#    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">#}
+{#    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>#}
+    <script src="{% static 'js/dataanalysis.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<body>
+
+<div class=" col-md-10">
+{#        <div class="jumbotron">#}
+{#            <h1>Beacon List Data</h1>#}
+{#            <p>dataTable Example (server-side)</p>#}
+{#        </div>#}
+{#<button>HI</button>#}
+
+    <canvas id="myChart" width="100" height="50"></canvas>
+
+
+
+{#modal#}
+
+  </div>
+
+
+<br><br><br><br><br><br>
+</body>
+{% endblock %}
+</html>

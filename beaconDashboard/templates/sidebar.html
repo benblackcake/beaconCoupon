@@ -1,0 +1,43 @@
+{#{% load dashboard_extras %}#}
+
+<div class="col-sm-3 col-md-2 sidebar">
+{#    <ul class="nav nav-sidebar">#}
+{#        <li class="{% active request "/dashboard/$" %}"><a href="{% url 'dashboard:index' %}">Overview <span class="sr-only">(current)</span></a></li>#}
+{#        <li class="{% active request "/dashboard/reports/" %}"><a href="{% url 'dashboard:reports' %}">Reports</a></li>#}
+{#        <li class="{% active request "/dashboard/analytics/" %}"><a href="{% url 'dashboard:analytics' %}">Analytics</a></li>#}
+{#        <li class="{% active request "/dashboard/export/" %}"><a href="{% url 'dashboard:export' %}">Export</a></li>#}
+{#    </ul>#}
+
+    <ul class="nav nav-sidebar">
+         <li class="nav-item">
+             <a style="font-family: fontpri,serif" class="nav-link" href="/dashboard">
+             <i class="glyphicon glyphicon-log-out"></i>
+             <span> 首頁</span></a>
+         </li>
+
+         <li class="nav-item">
+             <a style="font-family: fontpri,serif" href="/dashboard/datatable">
+             <i class="glyphicon glyphicon-list-alt"></i>
+             <span> 優惠券清單</span></a>
+         </li>
+
+         <li class="nav-item" >
+             <a style="font-family: fontpri,serif" href="/dashboard/newbeacondata">
+             <i class="glyphicon glyphicon-pencil"></i>
+             <span> 新增優惠券</span></a>
+         </li>
+
+         <li class="nav-item">
+             <a style="font-family: fontpri,serif" href="/dashboard/devicelist">
+             <i class="glyphicon glyphicon-cog"></i>
+             <span>裝置列表</span></a>
+         </li>
+
+         <li class="nav-item">
+             <a style="font-family: fontpri,serif" href="/dashboard/useranalysis">
+             <i class="glyphicon glyphicon-stats"></i>
+             <span>使用者收藏分析</span></a>
+         </li>
+    </ul>
+
+</div>

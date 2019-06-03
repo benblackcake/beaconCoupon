@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'stylesheets/img.css' %}">
+    <script src="{% static 'js/dataanalysis.js' %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+    <script src="{% static 'js/chart-area-demo.js' %}"></script>
+
+{#    <link rel="stylesheet" href="{% static 'stylesheets/styleindex.css' %}">#}
+ <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+{#          <ol class="breadcrumb">#}
+{#            <li class="breadcrumb-item">#}
+{#              <a href="#">Dashboard</a>#}
+{#            </li>#}
+{#            <li class="breadcrumb-item active">Charts</li>#}
+{#          </ol>#}
+{% if request.user.is_authenticated %}
+          <!-- Area Chart Example-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-chart-area"></i>
+              當月註冊會員人數統計</div>
+            <div class="card-body">
+              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+            </div>
+            <div class="card-footer small text-muted">更新時間: {{ time }}</div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fas fa-chart-bar"></i>
+                  優惠券使用情況</div>
+                <div class="card-body">
+                  <canvas id="myChart" width="100%" height="50"></canvas>
+                </div>
+                <div class="card-footer small text-muted">更新時間: {{ time }}</div>
+              </div>
+            </div>
+          </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                {% if datas %}
+                {% for data in datas %}
+            <div class="col-md-6 col-xs-6">
+                <div class="thumbnail">
+
+                   <div class="caption">
+                       <form method="POST">
+                           {% csrf_token %}
+
+                           <div class="form-group">
+                               <a href="{% url "beaconDashboard:coupondetial" data.id %}"><img id="img_coupon" src=" {{data.coupon_image_url_link.url}}" class="img-thumbnail" alt="Lights"> </a>
+                               <br>
+                               <h4 class="text-left" > 優惠券名稱 : {{ data.coupon_name}}</h4>
+
+                               <p class="text-left"> 折抵金額:: {{ data.coupon_dismoney}} </p>
+                               <input type="hidden" name="path_to_coupon_image_url_link" value="{{ data.path_to_coupon_image_url_link }}">
+                           </div>
+    {#                    <p><button  type="submit"  class="btn btn-primary" value="{{ data.id}}" name="sendUuidData_btn">Send</button></p>#}
+                        <p><button type="submit"  class="btn btn-success t" ><span class="glyphicon glyphicon-upload"></span>  Upload</button></p>
+    {#                    <br><br>#}
+                       </form>
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+                {% endif %}
+                </div>
+
+              </div>
+            </div>
+{#            <div class="col-lg-4">#}
+{#              <div class="card mb-3">#}
+{#                <div class="card-header">#}
+{#                  <i class="fas fa-chart-pie"></i>#}
+{#                  Pie Chart Example</div>#}
+{#                <div class="card-body">#}
+{#                  <canvas id="myPieChart" width="100%" height="100"></canvas>#}
+{#                </div>#}
+{#                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>#}
+{#              </div>#}
+{#            </div>#}
+          </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+
+
+
+{#    <script>#}
+{#        $("#exampleModal").modal()#}
+{#    </script>#}
+{% endif %}
+{% endblock %}

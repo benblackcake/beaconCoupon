@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load rest_framework %}
+{#{% render_form NameSerializer %}#}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+{#        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>#}
+{#<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>#}
+<script type="text/javascript" src="{% static 'datepicker/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'datepicker/daterangepicker.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'datepicker/daterangepicker.css' %}" />
+</head>
+{% block content %}
+
+<div class=" col-md-10">
+    <br>
+
+{#    {% url 'beaconDashboard:beaconlist' pk=profile.pk %}#}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+{#            {% render_field serializer.coupon_name style=style %}#}
+{#                    <form id="formEdit" role="form">#}
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="beacon_id"><span class="glyphicon glyphicon-pencil"></span>優惠券名稱</label>
+                            <input type="text" class="form-control" id="coupon_name" name="coupon_name" placeholder="coupon_name"
+                                  autofocus="true" required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券內容</label>
+                            <input type="text" class="form-control" id="coupon_content" name="coupon_content" placeholder="coupon_content"
+
+                                   required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>抵銷金額</label>
+                            <input onkeyup="value=value.replace(/[^\d]/g,'') " type="text" class="form-control" id="coupon_dismoney" name="coupon_dismoney" placeholder="coupon_dismoney"
+                                   required="true">
+                        </div>
+{#                        {% render_field serializer.coupon_image_url_link style=style %}#}
+{##}
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>上傳圖片</label>
+                            <input type="file" class="form-control" id="coupon_image_url_link" name="coupon_image_url_link" placeholder="coupon_image_url_link"
+                                   required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券開始時間</label>
+                            <input type="date" class="form-control" id="coupon_s_time" name="coupon_s_time" placeholder="startTime"
+                                   required="true">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="beacon_content"><span class="glyphicon glyphicon-pencil"></span>優惠券結束時間</label>
+                            <input type="date" class="form-control" id="coupon_e_time" name="coupon_e_time" placeholder="endTime"
+                                   required="true">
+
+                        </div>
+
+                        <input type="hidden" id="type" name="type" value="">
+                        <button type="submit" class="btn btn-success btn-block"><span
+                                class="glyphicon glyphicon-ok"></span> OK
+                        </button>
+{#                        <button type="submit"  class="btn btn-primary" value="Save" >Send</button>#}
+                    </form>
+
+{#        </form>#}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+    var dtToday = new Date();
+
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+
+    var maxDate = year + '-' + month + '-' + day;
+    $('#coupon_s_time').attr('min', maxDate);
+    $('#coupon_e_time').attr('min', maxDate);
+
+
+{#var $j = jQuery.noConflict();#}
+{#      $j('#datefilter').daterangepicker({#}
+{#      autoUpdateInput: false,#}
+{#      locale: {#}
+{#          cancelLabel: 'Clear'#}
+{#      }#}
+{#  });#}
+});
+</script>
+
+
+
+{% endblock %}

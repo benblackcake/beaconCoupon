@@ -1,0 +1,36 @@
+
+.card-body-icon {
+    position: absolute;
+    z-index: 0;
+    top: -1.25rem;
+    right: -1rem;
+    opacity: .4;
+    font-size: 5rem;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+}
+@media (min-width:576px) {
+    .card-columns {
+    -webkit-column-count: 1;
+    column-count: 1;
+}
+}@media (min-width:768px) {
+    .card-columns {
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+}@media (min-width:1200px) {
+    .card-columns {
+    -webkit-column-count: 2;
+    column-count: 2;
+}
+}:root {
+    --input-padding-x: 0.75rem;
+    --input-padding-y: 0.75rem;
+}
+.card-login {
+    max-width: 25rem;
+}
+.card-register {
+    max-width: 40rem;
+}

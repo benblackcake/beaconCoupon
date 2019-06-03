@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="col-md-6 col-md-4">
+        <div class="thumbnail">
+            <div class="caption">
+                {% if datas %}
+            {#    {% for data in datas %}#}
+            {#        <br><h3>URL : {{datas.beacon_image_url}}</h3>#}
+                <img src=" {{datas.coupon_image_url_link.url}}" class="img-thumbnail"  style="height:200px;width:400px" alt="Lights">
+                <br><h3>優惠券名稱: {{datas.coupon_name}}</h3>
+                <br><h5>優惠券內容: {{datas.coupon_content}}</h5>
+                <br><h5>折抵金額: {{datas.coupon_dismoney}}</h5>
+{#                <br><h5>DEBUG:{{ datas.coupon_image_url_link.url }}</h5>#}
+                <button type="submit" class="btn btn-success t"><span class="glyphicon glyphicon-upload"></span>  Upload</button>
+            {#    {% endfor %}#}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

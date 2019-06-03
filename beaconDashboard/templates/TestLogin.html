@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load rest_framework %}
+{#{% render_form NameSerializer %}#}
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+{% block content %}
+
+<div class="col-md-9">
+    <br>
+{#    {% url 'beaconDashboard:beaconlist' pk=profile.pk %}#}
+        <form method="post" >
+            {% csrf_token %}
+            {% render_form serializer %}
+            <button type="submit"  class="btn btn-primary" value="Save" >Send</button>
+        </form>
+</div>
+
+
+{% endblock %}
