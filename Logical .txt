@@ -1,5 +1,0 @@
-1. 之後會讓manager login
-2.login 之後會撈資料出來,這位manager所管理的beacon資料
-
-
-如果一天3,4小時解不出來要不要在多加點時間
